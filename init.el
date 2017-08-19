@@ -56,14 +56,8 @@
 ;; "yes or no" の選択を "y or n" にする
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; beep音を消す
-(defun my-bell-function ()
-  (unless (memq this-command
-		'(isearch-abort abort-recursive-edit exit-minibuffer
-				keyboard-quit mwheel-scroll down up next-line previous-line
-				backward-char forward-char))
-    (ding)))
-(setq ring-bell-function 'my-bell-function)
+;; beep音の代わりに画面フラッシュ
+(setq visible-bell t)
 
 ;; スクロールは１行ごとに
 (setq scroll-conservatively 1)
