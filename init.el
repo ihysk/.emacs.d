@@ -125,6 +125,47 @@
 ;; Utils
 ;; ========================================================================
 ;; ------------------------------------------------------------------------
+;; Name     : company-mode
+;; Function : auto complete
+;; ------------------------------------------------------------------------
+(el-get-bundle company-mode)
+(global-company-mode) ; 全バッファで有効にする
+(setq company-idle-delay 0) ; デフォルトは0.5
+(setq company-minimum-prefix-length 2) ; デフォルトは4
+(setq company-selection-wrap-around t) ; 候補の一番下でさらに下に行こうとすると一番上に戻る
+
+;; ------------------------------------------------------------------------
+;; Name     : flycheck
+;; Function : syntax checker
+;; ------------------------------------------------------------------------
+(el-get-bundle flycheck)
+;; Python
+(add-hook 'python-mode-hook 'flycheck-mode)
+;; Javascript
+(add-hook 'js2-mode-hook 'flycheck-mode)
+
+;; ------------------------------------------------------------------------
+;; Name     : helm
+;; Function : 補完や検索をするためのframework
+;; ------------------------------------------------------------------------
+(el-get-bundle helm)
+(helm-mode 1)
+
+(global-set-key (kbd "M-x") 'helm-M-x)
+(setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-x b") 'helm-mini)
+(setq helm-buffers-fuzzy-matching t
+      helm-recentf-fuzzy-match    t)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+;; ------------------------------------------------------------------------
+;; Name     : multi-term
+;; Fucntion : shell mode
+;; ------------------------------------------------------------------------
+(el-get-bundle multi-term)
+
+;; ------------------------------------------------------------------------
 ;; Name     : org-mode
 ;; ------------------------------------------------------------------------
 ;; org-mode/lisp, org-mode/contribe/lispをロードパスに追加する
@@ -143,19 +184,15 @@
 (require 'org)
 
 ;; ------------------------------------------------------------------------
-;; Name     : yasnippet
-;; Fucntion : スニペット(テンプレート)をすぐに呼び出す
+;; Name     : tabbar
 ;; ------------------------------------------------------------------------
-(el-get-bundle yasnippet)
-(add-to-list 'load-path
-             "~/.emacs.d/plugins/yasnippet")
-(yas-global-mode 1)
-
-;; ------------------------------------------------------------------------
-;; Name     : Multi-term
-;; Fucntion : shell mode
-;; ------------------------------------------------------------------------
-(el-get-bundle multi-term)
+(el-get-bundle tabbar)
+(tabbar-mode)
+(tabbar-mwheel-mode nil)                  ;; マウスホイール無効
+(setq tabbar-buffer-groups-function nil)  ;; グループ無効
+(setq tabbar-use-images nil)              ;; 画像を使わない
+;; (global-set-key (kbd "M-<right>") 'tabbar-forward-tab)
+;; (global-set-key (kbd "M-<left>") 'tabbar-backward-tab)
 
 ;; ------------------------------------------------------------------------
 ;; Name     : undo-tree
@@ -165,24 +202,13 @@
 (global-set-key (kbd "M-/") 'undo-tree-redo)
 
 ;; ------------------------------------------------------------------------
-;; Name     : flycheck
-;; Function : syntax checker
+;; Name     : yasnippet
+;; Fucntion : スニペット(テンプレート)をすぐに呼び出す
 ;; ------------------------------------------------------------------------
-(el-get-bundle flycheck)
-;; Python
-(add-hook 'python-mode-hook 'flycheck-mode)
-;; Javascript
-(add-hook 'js2-mode-hook 'flycheck-mode)
-
-;; ------------------------------------------------------------------------
-;; Name     : company-mode
-;; Function : auto complete
-;; ------------------------------------------------------------------------
-(el-get-bundle company-mode)
-(global-company-mode) ; 全バッファで有効にする
-(setq company-idle-delay 0) ; デフォルトは0.5
-(setq company-minimum-prefix-length 2) ; デフォルトは4
-(setq company-selection-wrap-around t) ; 候補の一番下でさらに下に行こうとすると一番上に戻る
+(el-get-bundle yasnippet)
+(add-to-list 'load-path
+             "~/.emacs.d/plugins/yasnippet")
+(yas-global-mode 1)
 
 
 ;; ========================================================================
