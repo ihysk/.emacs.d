@@ -71,6 +71,15 @@
 ;; 多くの設定ファイル用のメジャーモード
 (require 'generic-x)
 
+;; recentf
+(setq recentf-max-saved-items 2000) ;; 2000ファイルまで履歴保存する
+(setq recentf-auto-cleanup 'never)  ;; 存在しないファイルは消さない
+(setq recentf-exclude '("/recentf" "COMMIT_EDITMSG" "/.?TAGS" "^/sudo:" "/\\.emacs\\.d/games/*-scores" "/\\.emacs\\.d/\\.cask/"))
+(setq recentf-auto-save-timer (run-with-idle-timer 30 t 'recentf-save-list))
+(setq recentf-keep '(file-remote-p file-readable-p)) ;; ignore remote files
+(recentf-mode 1)
+(global-set-key (kbd "C-c t") 'helm-recentf)
+
 
 ;; ========================================================================
 ;; Key Bindings
@@ -158,6 +167,12 @@
 (setq helm-buffers-fuzzy-matching t
       helm-recentf-fuzzy-match    t)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+;; ------------------------------------------------------------------------
+;; Name     : magit
+;; Fucntion : emacs git client
+;; ------------------------------------------------------------------------
+(el-get-bundle magit)
 
 ;; ------------------------------------------------------------------------
 ;; Name     : multi-term
