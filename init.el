@@ -1,4 +1,4 @@
-;; ========================================================================
+1;95;0c;; ========================================================================
 ;; Initial Settings
 ;; ========================================================================
 ;; el-get ロードパス設定
@@ -76,6 +76,25 @@
 
 ;; 括弧を自動で閉じる
 (electric-pair-mode t)
+
+;; ------------------------------------------------------------------------
+;; Name     : org-mode
+;; ------------------------------------------------------------------------
+;; org-mode/lisp, org-mode/contribe/lispをロードパスに追加する
+(defconst dotfiles-dir (file-name-directory
+                        (or (buffer-file-name) load-file-name)))
+(defconst config-dir "~/.emacs.d/inits/")
+(let* ((org-dir (expand-file-name
+                 "lisp" (expand-file-name
+                         "org-mode" el-get-dir)))
+       (org-contrib-dir (expand-file-name
+                         "lisp" (expand-file-name
+                                 "contrib" (expand-file-name
+                                            ".." org-dir)))))
+  (setq load-path (append (list org-dir org-contrib-dir)
+                          (or load-path nil))))
+(require 'org)
+
 
 ;; ========================================================================
 ;; Key Bindings
@@ -199,24 +218,6 @@
 ;; Fucntion : shell mode
 ;; ------------------------------------------------------------------------
 (el-get-bundle multi-term)
-
-;; ------------------------------------------------------------------------
-;; Name     : org-mode
-;; ------------------------------------------------------------------------
-;; org-mode/lisp, org-mode/contribe/lispをロードパスに追加する
-(defconst dotfiles-dir (file-name-directory
-                        (or (buffer-file-name) load-file-name)))
-(defconst config-dir "~/.emacs.d/inits/")
-(let* ((org-dir (expand-file-name
-                 "lisp" (expand-file-name
-                         "org-mode" el-get-dir)))
-       (org-contrib-dir (expand-file-name
-                         "lisp" (expand-file-name
-                                 "contrib" (expand-file-name
-                                            ".." org-dir)))))
-  (setq load-path (append (list org-dir org-contrib-dir)
-                          (or load-path nil))))
-(require 'org)
 
 ;; ------------------------------------------------------------------------
 ;; Name     : powerline
