@@ -147,6 +147,14 @@
 (setq company-selection-wrap-around t) ; 候補の一番下でさらに下に行こうとすると一番上に戻る
 
 ;; ------------------------------------------------------------------------
+;; Name     : expand-region
+;; Function : カーソル中のシンボルを一括でリージョン選択する
+;; ------------------------------------------------------------------------
+(el-get-bundle expand-region)
+(global-set-key (kbd "C-,") 'er/expand-region)
+(global-set-key (kbd "M-,") 'er/contract-region)
+
+;; ------------------------------------------------------------------------
 ;; Name     : flycheck
 ;; Function : syntax checker
 ;; ------------------------------------------------------------------------
@@ -170,6 +178,14 @@
 (setq helm-buffers-fuzzy-matching t
       helm-recentf-fuzzy-match    t)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+;; ------------------------------------------------------------------------
+;; Name     : highlight-symbol
+;; Function : カーソル中のシンボルにハイライトを設定する
+;; ------------------------------------------------------------------------
+(el-get-bundle highlight-symbol)
+(setq highlight-symbol-colors '("LightSeaGreen" "HotPink" "SlateBlue1" "DarkOrange" "SpringGreen1" "tan" "DodgerBlue1"))
+(global-set-key (kbd "C-l") 'highlight-symbol-at-point)
 
 ;; ------------------------------------------------------------------------
 ;; Name     : magit
