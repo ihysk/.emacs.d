@@ -256,9 +256,10 @@
 ;; ------------------------------------------------------------------------
 ;; Name     : undo-tree
 ;; ------------------------------------------------------------------------
-(el-get-bundle undo-tree)
-(global-undo-tree-mode)
-(global-set-key (kbd "M-/") 'undo-tree-redo)
+;; temporarily disabled since server is down?
+;;(el-get-bundle undo-tree)
+;;(global-undo-tree-mode)
+;;(global-set-key (kbd "M-/") 'undo-tree-redo)
 
 ;; ------------------------------------------------------------------------
 ;; Name     : yasnippet
