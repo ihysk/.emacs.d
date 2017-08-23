@@ -265,8 +265,10 @@
 ;; Fucntion : スニペット(テンプレート)をすぐに呼び出す
 ;; ------------------------------------------------------------------------
 (el-get-bundle yasnippet)
-(add-to-list 'load-path
-             "~/.emacs.d/plugins/yasnippet")
+(setq yas-snippet-dirs
+      '("~/.emacs.d/snippets" ;; 自作分
+        "~/.emacs.d/yasnippet/snippets" ;; オリジナル
+        ))
 (yas-global-mode 1)
 
 
