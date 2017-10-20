@@ -128,7 +128,7 @@
 (menu-bar-mode -1)
 
 ;; ツールバーを消す
-(tool-bar-mode -1)
+;; (tool-bar-mode -1)
 
 ;; 列数を表示する
 (column-number-mode t)
@@ -302,6 +302,13 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))
 
+
+;; ========================================================================
+;; golang
+;; ========================================================================
+;; go-mode
+(el-get-bundle go-mode)
+
 ;; Gradle
 (el-get-bundle gradle-mode)
 
@@ -311,9 +318,10 @@
 ;; YAML mode
 (el-get-bundle yaml-mode)
 
-
-;; ========================================================================
-;; golang
-;; ========================================================================
-;; go-mode
-(el-get-bundle go-mode)
+;; plantuml mode
+(el-get-bundle plantuml-mode)
+(setq plantuml-jar-path "/usr/local/Cellar/plantuml/1.2017.18/libexec/plantuml.jar")
+(setq plantuml-output-type "utxt")
+;; Enable puml-mode for PlantUML files
+(add-to-list 'auto-mode-alist '("\\.puml\\'" . plantuml-mode))
+(add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
