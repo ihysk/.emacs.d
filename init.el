@@ -315,10 +315,10 @@
 ;; Markdown
 (el-get-bundle markdown-mode)
 
-;; YAML mode
+;; YAML
 (el-get-bundle yaml-mode)
 
-;; plantuml mode
+;; plantuml
 (el-get-bundle plantuml-mode)
 (setq plantuml-jar-path "/usr/local/Cellar/plantuml/1.2017.18/libexec/plantuml.jar")
 (setq plantuml-output-type "utxt")
